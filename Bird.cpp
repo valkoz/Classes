@@ -1,0 +1,37 @@
+#include "Bird.h"
+#include "SimpleAudioEngine.h"
+#include <iostream>
+
+USING_NS_CC;
+
+Bird::Bird(cocos2d::Layer *layer)
+{
+	visibleSize = Director::getInstance()->getVisibleSize();
+	origin = Director::getInstance()->getVisibleOrigin();
+	bird = Sprite::create("ball2.png");
+    bird->setPosition( Point(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    auto birdBody = PhysicsBody::createCircle(bird->getContentSize().width/2);
+	birdBody->setCollisionBitmask(BIRD_COLLISION_BITMASK);
+	birdBody->setContactTestBitmask(true);
+	
+    bird->setPhysicsBody(birdBody);
+    layer->addChild(bird,100);
+
+
+	isFalling = true;
+}
+
+void Bird::Fall(){
+	if (true == isFalling)
+		{
+			bird->setPositionX(visibleSize.width/2 + origin.x);
+			bird->setPositionY(bird->getPositionY()-(BIRD_FALLING_SPEED* visibleSize.height));
+	}
+	else
+		{
+			bird->setPositionX(visibleSize.width/2 + origin.x);
+			bird->setPositionY(bird->getPositionY()+(BIRD_FLYING_SPEED* visibleSize.height));
+		}
+}
+
+
