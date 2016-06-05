@@ -76,7 +76,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     	CCLOG("last else");
       //  director->setContentScaleFactor(MIN(smallResolutionSize.height/designResolutionSize.height, smallResolutionSize.width/designResolutionSize.width));
     }
-    //if (frameSize.height == 1080)
+    if (frameSize.height == 1080)
     //	director->setContentScaleFactor(MIN(1080/designResolutionSize.height, 1920/designResolutionSize.width));
 
     register_all_packages();

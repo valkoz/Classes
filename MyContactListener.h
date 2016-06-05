@@ -1,0 +1,16 @@
+#include "Box2D/Box2D.h"
+
+class MyContactListener : public b2ContactListener
+  {
+
+	void BeginContact(b2Contact* contact) {
+  
+      	void* bodyUserData = contact->GetFixtureA()->GetBody()->GetUserData();
+	void* bodyUserData2 = contact->GetFixtureB()->GetBody()->GetUserData();
+
+	if ((bodyUserData)||(bodyUserData2))
+		isContact = 1;
+    }
+public:
+	bool isContact = 0;
+};
